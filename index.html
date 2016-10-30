@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans|Roboto:300">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>T.J. Mazeika</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <section class="content">
+        <h1 class="header-h">T.J. Mazeika</h1>
+        <sub class="header-s">student, developer, gamer, and sound guy.</sub>
+      </section>
+    </header>
+
+    <main class="main">
+      <div class="content">
+        <section class="main-section">
+          <h1 class="main-h">Hey,</h1>
+          <p class="main-p">
+            My name is T.J. Mazeika, also known as "bionicrm" online. Outside of school, I work as a student sound
+            engineer. At home, I develop web and system applications. Thus far, I am fluent in Java, Go, C/C++, Dart,
+            PHP and other web languages, and am acquainted with Python, Ruby, Rust, Kotlin, Groovy, and a few others.
+          </p>
+        </section>
+      </div>
+
+      <section class="main-img-section">
+        <div class="content">
+          <h1 class="main-img-section-h">
+            My Rig
+          </h1>
+        </div>
+      </section>
+
+      <div class="content">
+        <section class="main-section">
+          <p class="main-p">
+            If I'm not studying or coding, I'm upgrading my computer. My machine, including peripherals, can probably be
+            valued well above $2,000 USD. Here's what's inside:
+          </p>
+          <ul class="main-ul">
+            <li>Intel Core i7 6700K @ 4.7 GHz</li>
+            <li>GTX 980 Ti</li>
+            <li>16 GB DDR4 RAM</li>
+            <li>Z170-A motherboard</li>
+            <li>Fractal Design Define R4 Blackout case</li>
+            <li>1 TB HDD</li>
+            <li>480 + 120 GB SSD</li>
+            <li>750W PSU</li>
+          </ul>
+          <p class="main-p">
+            I'm also rockin' a 27" dual-monitor setup with 5.1 surround and an LED-backlit
+            <a class="link" href="https://codekeyboards.com/">CODE keyboard</a>. I primarily use Arch Linux with the i3
+            window manager for everyday use, and Windows 7 for Office products and gaming.
+          </p>
+        </section>
+
+        <section class="main-section">
+          <h1 class="main-h">About this site</h1>
+          <p class="main-p">
+            This site was built with straight-up HTML5 and CSS3 (with some JavaScript) and hosted on
+            <a class="link" href="https://m.do.co/c/91e61851ee3e">DigitalOcean</a>. Feel free to check out the
+            <a class="link" href="https://github.com">source code</a>.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <section class="content">
+        <div class="footer-block">
+          Copyright &copy; <span id="year"></span> T.J. Mazeika
+        </div>
+
+        <div class="footer-spacer"></div>
+
+        <div class="footer-block">
+          <a class="link" href="https://github.com/bionicrm">
+            <img src="github-logo.png" alt="GitHub Logo"/>
+          </a>
+        </div>
+      </section>
+    </footer>
+
+    <script>
+      document.getElementById('year').innerHTML = new Date().getFullYear().toString();
+    </script>
+  </body>
+</html>
