@@ -86,7 +86,7 @@ body {
 }
 
 .main-img-section {
-  background: url('pc.jpg') fixed;
+  background: url('img/pc.jpg') fixed;
   background-size: cover;
   padding: 3em 0;
 }
@@ -97,4 +97,28 @@ body {
   text-shadow: 0 0 5px #000;
 
   margin: 3em 0;
+}
+
+.projects-block {
+  margin-top: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
+.projects-img {
+  max-height: 5em;
+  margin-right: 1.5em;
+}
+
+.projects-h {
+  font-size: 20pt;
+
+  margin-bottom: 0;
+}
+
+.projects-p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14pt;
+
+  margin-top: 0.25em;
 }
