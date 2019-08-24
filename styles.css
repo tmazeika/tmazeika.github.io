@@ -12,6 +12,7 @@ body {
 
 .banner {
   height: 100vh;
+  padding: 1em;
 
   display: flex;
   align-items: center;
