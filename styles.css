@@ -93,3 +93,18 @@ a:hover {
   margin: 0;
   padding-left: 1.2em;
 }
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 3em;
+  }
+
+  .header > div {
+    display: flex;
+    align-items: center;
+  }
+
+  .experience-title {
+    flex-direction: column;
+  }
+}
