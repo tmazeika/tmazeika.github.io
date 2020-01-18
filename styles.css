@@ -3,71 +3,93 @@
 }
 
 body {
-  background-color: #223;
-  color: #fff;
-  font: 200 1em/1.2 'Fira Sans', sans-serif;
+  background-color: #fff;
+  color: #333;
+  font: 200 1em/1.5 'Source Sans Pro', sans-serif;
 
   margin: 0;
 }
 
-.banner {
-  height: 100vh;
-  padding: 1em;
+h1, h2, h3 {
+  font: 200 5em/1 'Playfair Display', serif;
 
+  margin: 0 0 1rem 0;
+}
+
+h2, h3 {
+  font-size: 2em;
+}
+
+p {
+  margin: 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+:root {
+  --color-muted: #bbb;
+  --color-accent: #c33535;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline var(--color-muted);
+}
+
+a:hover {
+  text-decoration-color: inherit;
+}
+
+.color-muted {
+  color: var(--color-muted);
+}
+
+.color-accent {
+  color: var(--color-accent);
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 70rem;
+  margin: 1em auto;
+  padding: 0 1em;
+}
+
+.header {
+  margin-bottom: 2em;
+}
+
+.header > div {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.main > section {
+  margin-bottom: 1em;
+}
+
+.main-indented {
+  padding-left: 1em;
+}
+
+.experience:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.experience-title {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  max-width: 38em;
 }
 
-.banner-box {
-  fill: none;
-  stroke-width: 1px;
+.main ul {
+  list-style-type: circle;
 
-  animation-delay: 1s;
-  animation-duration: 10s;
-  animation-fill-mode: both;
-}
-
-.banner-box:nth-of-type(1) {
-  stroke: #ff4123;
-  stroke-dasharray: 200px, 200px;
-  stroke-dashoffset: 0;
-
-  animation-name: banner-box, banner-box-1;
-}
-
-.banner-box:nth-of-type(2) {
-  stroke: #fff;
-  stroke-dasharray: 400px, 0;
-  stroke-dashoffset: 200px;
-
-  animation-name: banner-box, banner-box-2;
-}
-
-@keyframes banner-box {
-  from {
-    stroke-dasharray: 0, 400px;
-    stroke-opacity: 0;
-  }
-
-  25% {
-    stroke-opacity: 1;
-  }
-}
-
-@keyframes banner-box-1 {
-  from {
-    stroke-dashoffset: -75px;
-  }
-}
-
-@keyframes banner-box-2 {
-  from {
-    stroke-dashoffset: 125px;
-  }
-}
-
-#banner-name {
-  fill: #fff;
-  font: 200 5em/1.2 'Fira Sans', sans-serif;
+  margin: 0;
+  padding-left: 1.2em;
 }
