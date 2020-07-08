@@ -29,8 +29,8 @@ strong {
 }
 
 :root {
-  --color-muted: #bbb;
   --color-accent: #c33535;
+  --color-muted: #bbb;
 }
 
 a {
@@ -60,7 +60,7 @@ a:hover {
   padding: 0 1em;
 }
 
-.header {
+.container:not(:last-child) {
   margin-bottom: 2em;
 }
 
@@ -107,4 +107,8 @@ a:hover {
   .experience-title {
     flex-direction: column;
   }
+}
+
+.footer > *:not(:last-child) {
+  margin-right: 1em;
 }
