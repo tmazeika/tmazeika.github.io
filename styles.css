@@ -167,6 +167,10 @@ a:hover {
   .experience-title {
     flex-direction: column;
   }
+
+  .lang-container {
+    margin-left: 0.25em;
+  }
 }
 
 .footer {
