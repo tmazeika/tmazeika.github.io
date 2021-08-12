@@ -51,7 +51,7 @@ footer ul {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  column-gap: 1rem;
 }
 
 .top-level-section {
