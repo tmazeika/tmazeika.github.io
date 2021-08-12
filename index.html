@@ -4,255 +4,74 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:400,400i,600&display=swap">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css"/>
 
   <title>TJ Mazeika</title>
 </head>
 <body>
-  <header class="container header">
-    <div>
-      <h1><span class="color-accent">T&thinsp;J</span> Mazeika</h1>
-      <h2 class="color-muted">student &amp; developer</h2>
-    </div>
+  <header class="top-level-section">
+    <h4>TJ Mazeika</h4>
+    <nav>
+      <ul class="horizontal-ul">
+        <li>
+          <a href="index.html">About</a>
+        </li>
+        <li>
+          <a href="blog.html">Blog</a>
+        </li>
+      </ul>
+    </nav>
   </header>
-  <main class="container main">
+  <main class="top-level-section">
     <section>
-      <h3>Projects</h3>
-      <div class="main-indented">
-        <div class="experience">
-          <div class="experience-title">
-            <div>
-              <a href="https://github.com/suiteserve/suiteserve">
-                <strong>SuiteServe</strong>
-              </a>
-            </div>
-            <div class="lang-container">
-              <div class="lang lang-go"></div>
-              <p>Go</p>
-            </div>
-            <div class="lang-container">
-              <div class="lang lang-ts"></div>
-              <p>TypeScript</p>
-            </div>
-            <div class="flex-spacer"></div>
-            <span class="color-muted">March 2020 &mdash; Present</span>
-          </div>
-          <ul>
-            <li>A test reporting system and real-time UI</li>
-            <li>Implements a REST API over HTTP/2 to query and upsert to MongoDB</li>
-            <li>Uses React with Redux and server-sent events to receive data updates</li>
-          </ul>
-        </div>
-        <div class="experience">
-          <div class="experience-title">
-            <div>
-              <a href="https://github.com/tmazeika/tmazeika.github.io">
-                <strong>mazeika.me</strong>
-              </a>
-            </div>
-            <div class="lang-container">
-              <div class="lang lang-html"></div>
-              <p>HTML</p>
-            </div>
-            <div class="flex-spacer"></div>
-            <span class="color-muted">August 2019 &mdash; Present</span>
-          </div>
-          <ul>
-            <li>This website!</li>
-            <li>A static HTML and CSS site hosted on GitHub Pages</li>
-            <li>Responsive design with CSS flexbox and breakpoints</li>
-          </ul>
-        </div>
-        <div class="experience">
-          <div class="experience-title">
-            <div>
-              <a href="https://github.com/tmazeika/ttempire">
-                <strong>TTEmpire</strong>
-              </a>
-            </div>
-            <div class="lang-container">
-              <div class="lang lang-php"></div>
-              <p>PHP</p>
-            </div>
-            <div class="lang-container">
-              <div class="lang lang-js"></div>
-              <p>JavaScript</p>
-            </div>
-            <div class="flex-spacer"></div>
-            <span class="color-muted">April &mdash; July 2017</span>
-          </div>
-          <ul>
-            <li>An e-commerce website using Laravel and the PayPal API</li>
-            <li>Developed for a client to showcase and sell table tennis accessories</li>
-            <li>Adapted to be responsive with CSS breakpoints</li>
-          </ul>
-        </div>
-        <div class="experience">
-          <div class="experience-title">
-            <div>
-              <strong>
-                <a href="https://github.com/tmazeika/emulifx">emulifx</a>,
-                <a href="https://github.com/tmazeika/ledlifx">ledlifx</a>,
-                <a href="https://github.com/tmazeika/implifx">implifx</a>,
-                <a href="https://github.com/tmazeika/clifx">clifx</a>
-              </strong>
-            </div>
-            <div class="lang-container">
-              <div class="lang lang-go"></div>
-              <p>Go</p>
-            </div>
-            <div class="flex-spacer"></div>
-            <span class="color-muted">August &mdash; September 2016</span>
-          </div>
-          <ul>
-            <li>Enables the emulation, testing, and control of LIFX smart light bulbs</li>
-            <li>Interfaces include an OpenGL app, a CLI, and the Raspberry Pi</li>
-            <li>Connects to bulbs via UDP broadcasting and TCP over a binary protocol</li>
-          </ul>
-        </div>
-        <div class="experience">
-          <div class="experience-title">
-            <div>
-              <strong>
-                <a href="https://github.com/tmazeika/LolBot">LolBot</a>
-              </strong>
-            </div>
-            <div class="lang-container">
-              <div class="lang lang-java"></div>
-              <p>Java</p>
-            </div>
-            <div class="flex-spacer"></div>
-            <span class="color-muted">November 2014 &mdash; January 2016</span>
-          </div>
-          <ul>
-            <li>A toy IRC bot using the <a href="https://github.com/KittehOrg/KittehIRCClientLib">Kitteh IRC Client
-                Library</a></li>
-            <li>Responds to simple commands with random, nonsensical factoids</li>
-            <li>Automatically updates its factoid list from GitHub while running</li>
-          </ul>
-        </div>
-      </div>
+      <p>
+        I am a computer science student at Northeastern University and a software engineering freelancer. I primarily
+        develop for the web because of its ubiquity and demand, but I'm eager to apply my skills professionally to
+        other domains like 3D rendering, algorithms, and systems programming.
+      </p>
     </section>
     <section>
-      <h3>Education</h3>
-      <div class="main-indented">
-        <p><strong class="color-accent">Northeastern University</strong></p>
-        <p><em>Khoury College of Computer Sciences</em></p>
-        <p>Candidate for a BS degree in Computer Science</p>
-        <p>Class of 2022</p>
-      </div>
+      <h4>Experience</h4>
+      <ul>
+        <li>
+          <strong>Mazeika LLC</strong><br/>
+          Founder &amp; Software Engineer<br/>
+          <small>Nov 2020&thinsp;&ndash;&thinsp;Present</small>
+        </li>
+        <li>
+          <strong>AIR Worldwide</strong><br/>
+          Software Engineer Co-op<br/>
+          <small>Jan&thinsp;&ndash;&thinsp;Jun 2021</small>
+        </li>
+        <li>
+          <strong>Digitas</strong><br/>
+          DevOps Engineer Co-op<br/>
+          <small>Jan&thinsp;&ndash;&thinsp;Jul 2020</small>
+        </li>
+      </ul>
     </section>
     <section>
-      <h3>Experience</h3>
-      <div class="main-indented">
-        <div class="experience">
-          <div class="experience-title">
-            <div>
-              <strong>Digitas</strong>&ensp;<span class="color-muted">Boston, MA</span>
-            </div>
-            <div class="flex-spacer"></div>
-            <span class="color-muted">January &mdash; July 2020</span>
-          </div>
-          <p>
-            <em>Associate DevOps Engineer (Co-op)</em><br/>
-          </p>
-          <ul>
-            <li>Streamlined front-end QA automation processes with Selenium Java</li>
-            <li>Automated Jenkins-Confluence synchronization to improve information accessibility</li>
-            <li>Investigated AWS services for future audio and video analysis projects</li>
-          </ul>
-        </div>
-
-        <div class="experience">
-          <div class="experience-title">
-            <div>
-              <strong>Cheeky Monkey Brewing Co</strong>&ensp;<span class="color-muted">Boston, MA</span>
-            </div>
-            <div class="flex-spacer"></div>
-            <span class="color-muted">December 2018 &mdash; June 2019</span>
-          </div>
-          <p>
-            <em>Server, Host, Game Booth Attendant</em><br/>
-          </p>
-          <ul>
-            <li>Delivered pleasurable dining experiences to high volumes of guests</li>
-            <li>Welcomed diners in a friendly and professional manner while building a rapport</li>
-            <li>Collaborated in a small team to ensure restaurant cleanliness and efficiency</li>
-          </ul>
-        </div>
-
-        <div class="experience">
-          <div class="experience-title">
-            <div>
-              <strong>IATSE Local 8</strong>&ensp;<span class="color-muted">Sewell, NJ</span>
-            </div>
-            <div class="flex-spacer"></div>
-            <span class="color-muted">February 2016 &mdash; June 2018</span>
-          </div>
-          <p>
-            <em>Stagehand Apprentice</em><br/>
-          </p>
-          <ul>
-            <li>Exceeded client expectations with amazing spectacles in a four to seven person crew</li>
-            <li>Responded rapidly to unexpected technical issues and show-time requests</li>
-            <li>Ensured the production readiness of critical stage equipment</li>
-          </ul>
-        </div>
-
-        <div class="experience">
-          <div class="experience-title">
-            <div>
-              <strong>Hack Club</strong>&ensp;<span class="color-muted">Sewell, NJ</span>
-            </div>
-            <div class="flex-spacer"></div>
-            <span class="color-muted">November 2017 &mdash; April 2018</span>
-          </div>
-          <p>
-            <em>Founder at Washington Township High School</em><br/>
-          </p>
-          <ul>
-            <li>Launched a club to teach a small group of students about the foundations of coding</li>
-            <li>Presented programming assignments from <a href="https://hackclub.com/">hackclub.com</a> for members to
-              complete
-            </li>
-            <li>Mentored students through problem solving and technical challenges</li>
-          </ul>
-        </div>
-
-        <div class="experience">
-          <div class="experience-title">
-            <div>
-              <strong>Washington Township Public Schools</strong>&ensp;<span class="color-muted">Sewell, NJ</span>
-            </div>
-            <div class="flex-spacer"></div>
-            <span class="color-muted">July 2017 &mdash; January 2018</span>
-          </div>
-          <p>
-            <em>IT Technician</em><br/>
-          </p>
-          <ul>
-            <li>Prepared technological equipment for use throughout the school district</li>
-            <li>Troubleshooted computer hardware problems for staff and students</li>
-            <li>Expedited equipment servicing by ordering parts and making repairs</li>
-          </ul>
-        </div>
-      </div>
+      <h4>Education</h4>
+      <p>
+        <strong>Northeastern University</strong><br/>
+        <span class="hanging-indent">Khoury College of Computer Sciences</span><br/>
+        <span class="hanging-indent">Candidate for a Bachelor of Science in Computer Science</span><br/>
+        <small>Sep 2018&thinsp;&ndash;&thinsp;Dec 2021 (expected)</small>
+      </p>
     </section>
   </main>
-  <footer class="container footer">
-    <a href="https://github.com/tmazeika">
-      <div class="github-container">
-        <img class="github-img" src="github.svg" alt="GitHub logo"/>
-        <p>/tmazeika</p>
-      </div>
-    </a>
-    <span class="color-muted" id="e"></span>
+  <footer class="top-level-section">
+    <ul class="horizontal-ul">
+      <li>GitHub <a href="https://github.com/tmazeika">@tmazeika</a></li>
+      <li>Email
+        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#97;&#122;&#101;&#105;&#107;&#97;&#46;&#116;&#106;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">
+          &#109;&#97;&#122;&#101;&#105;&#107;&#97;&#46;&#116;&#106;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>
+      </li>
+      <li>Location <strong>Boston, MA</strong></li>
+    </ul>
   </footer>
-  <script>
-    document.getElementById('e').innerHTML =
-      'tj&thinsp;(at)&thinsp;mazeika&thinsp;(dot)&thinsp;me';
-  </script>
 </body>
 </html>
