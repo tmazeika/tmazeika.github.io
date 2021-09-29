@@ -46,6 +46,12 @@ footer ul {
   margin: 1rem 0;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .horizontal-ul {
   list-style: none;
   padding: 0;

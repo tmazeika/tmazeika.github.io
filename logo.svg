@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+  id="svg5"
+  version="1.1"
+  viewBox="0 0 977.79034 895.18408"
+  height="895.18408"
+  width="977.79034"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g
+    transform="translate(-122.59066,-235.61678)">
+    <g
+      transform="translate(71.104819,112.40796)">
+      <path
+        style="fill:#2a5498;fill-opacity:1;stroke:none;stroke-width:1.56591px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+        d="m 364.50683,443.42232 v 564.97058 l 71.38018,-21.5373 V 452.80858 Z"/>
+      <path
+        style="fill:#2a5498;fill-opacity:1;stroke-width:1.56591"
+        d="m 560.97286,469.25976 71.3802,-21.53732 V 313.22281 L 132.86603,247.53738 61.485838,269.07469 560.97286,334.76013"/>
+      <path
+        style="fill:#2a5498;fill-opacity:1;stroke:none;stroke-width:1.56591px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+        d="m 751.42996,328.9575 v 363.25739 c 0,88.31647 -59.89707,158.59581 -110.24918,184.49271 C 821.2473,840.20095 822.81014,732.07962 822.81014,672.90085 v -334.5571 z"/>
+      <path
+        style="fill:#2a5498;fill-opacity:1;stroke-width:1.56591"
+        d="m 519.78916,133.20882 -71.38018,21.5373 499.48701,65.68545 v 134.49962 l 71.38021,-21.53731 V 198.89425 Z"/>
+    </g>
+  </g>
+</svg>
