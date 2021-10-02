@@ -1,0 +1,12 @@
+title: TJ Mazeika
+description: >-
+  Home of TJ Mazeika.
+baseurl: ""
+url: "https://mazeika.me"
+
+defaults:
+- scope:
+    path: ""
+    type: "posts"
+  values:
+    layout: "post"
