@@ -1,5 +1,6 @@
 ---
-layout: default title: Blog
+layout: default
+title: Blog
 ---
 
 # All Posts

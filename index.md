@@ -1,5 +1,6 @@
 ---
-layout: default title: About
+layout: default
+title: About
 ---
 
 I am a computer science student at Northeastern University and a software
