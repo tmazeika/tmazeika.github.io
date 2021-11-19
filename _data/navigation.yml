@@ -1,4 +1,6 @@
 - name: About
   link: /
+- name: Résumé
+  link: /assets/pdf/resume.pdf
 - name: Blog
   link: /blog.html
