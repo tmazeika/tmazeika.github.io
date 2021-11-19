@@ -20,5 +20,5 @@
     "@typescript-eslint/sort-type-union-intersection-members": "error",
     "@typescript-eslint/strict-boolean-expressions": "error"
   },
-  "ignorePatterns": ["/*.config.js"]
+  "ignorePatterns": ["/docs/", "/*.config.js"]
 }
