@@ -3,7 +3,7 @@ layout: default
 title: Blog
 ---
 
-# All Posts
+## All Posts
 
 {% for post in site.posts %}
 

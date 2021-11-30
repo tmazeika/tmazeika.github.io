@@ -9,7 +9,7 @@ I started programming when I was 12 years old. Like many of my friends at the ti
 
 Throughout high school, I shifted my focus to web development and hobby electronics. My goal during that time was to build personal projects as practice and for fun. That work also solidified my passion for computer science as a profession, which led me to apply as a computer science major at Northeastern University. Since then, I've held a couple of engineering co-op positions and started my own freelancing business. I love building from scratch while using new technologies and participating in fast-paced environments. To that end, I prefer working in smaller teams and early stage startups.
 
-# Experience
+## Experience
 
 - **FoldLeft**  
   Founder & Software Engineer  
@@ -21,7 +21,7 @@ Throughout high school, I shifted my focus to web development and hobby electron
   DevOps Engineer Co-op  
   <small>Jan &ndash; Jul 2020</small>
 
-# Education
+## Education
 
 Northeastern University  
 <span class="hanging-indent">Khoury College of Computer Sciences</span>  
