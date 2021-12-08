@@ -8,7 +8,7 @@ Forms in React are particularly tedious to implement because each input componen
 
 Before we get to the implementation, here's what we're trying to achieve:
 
-<script src="https://gist.github.com/tmazeika/a67b7b69b0c0eb6a037afd0693cf4224.js"></script>
+<script src="https://gist.github.com/tmazeika/39f3401130f68b1c686c95cb622af957.js"></script>
 
 The best part about this is that everything is fully type checked. Given the hook's `initialValues` option, we can guarantee that a value's type won't accidentally be changed (or be unexpectedly set to `undefined`, which is a whole [other problem](https://stackoverflow.com/questions/37427508/react-changing-an-uncontrolled-input)). See that `form.set('name', 5)` won't type check, but it would if the initial value of `name` was a number. Nor would `form.set('nmae', '...')` type check.
 
