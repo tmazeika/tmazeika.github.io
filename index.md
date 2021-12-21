@@ -25,8 +25,8 @@ Throughout high school, I shifted my focus to web development and hobby electron
 
 Northeastern University  
 <span class="hanging-indent">Khoury College of Computer Sciences</span>  
-<span class="hanging-indent">Candidate for a Bachelor of Science in Computer
+<span class="hanging-indent">Bachelor of Science in Computer
 Science</span>  
-<small>Sep 2018 &ndash; Dec 2021 (expected)</small>
+<small>Sep 2018 &ndash; Dec 2021</small>
 
 {% include footer.html %}
