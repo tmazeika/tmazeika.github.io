@@ -23,7 +23,7 @@ Throughout high school, I shifted my focus to web development and hobby electron
 
 ## Education
 
-Northeastern University  
+**Northeastern University**  
 <span class="hanging-indent">Khoury College of Computer Sciences</span>  
 <span class="hanging-indent">Bachelor of Science in Computer
 Science</span>  
