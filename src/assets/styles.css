@@ -1,28 +1,3 @@
-@font-face {
-  font-family: 'Source Code Pro';
-  font-weight: 400;
-  font-style: italic;
-  src: url('/assets/source-code-pro-italic.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Source Code Pro';
-  font-weight: 400;
-  src: url('/assets/source-code-pro-regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-weight: 700;
-  src: url('/assets/source-sans-pro-bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-weight: 400;
-  src: url('/assets/source-sans-pro-regular.ttf') format('truetype');
-}
-
 * {
   box-sizing: border-box;
 }
