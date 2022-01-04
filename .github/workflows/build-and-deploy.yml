@@ -1,4 +1,4 @@
-name: Build and deploy
+name: build and deploy
 on: [push]
 jobs:
   build-and-deploy:
@@ -6,12 +6,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install and build
+      - name: install and build
         run: |
           yarn --frozen-lockfile
           yarn build
           
-      - name: Deploy
+      - name: deploy
         uses: JamesIves/github-pages-deploy-action@4.1.8
         with:
           branch: gh-pages
