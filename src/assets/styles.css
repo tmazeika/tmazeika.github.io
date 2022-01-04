@@ -1,14 +1,14 @@
 @font-face {
   font-family: 'Source Code Pro';
   font-weight: 400;
-  src: url('/assets/source-code-pro-regular.ttf') format('truetype');
+  font-style: italic;
+  src: url('/assets/source-code-pro-italic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Source Code Pro';
   font-weight: 400;
-  font-style: italic;
-  src: url('/assets/source-code-pro-italic.ttf') format('truetype');
+  src: url('/assets/source-code-pro-regular.ttf') format('truetype');
 }
 
 @font-face {
