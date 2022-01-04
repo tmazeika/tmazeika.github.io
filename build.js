@@ -39,6 +39,7 @@ const pug = require('pug');
 
   copyTree('build/src/pages', 'build/public', (filename) =>
     path.extname(filename) === '.pug' ? compilePage(filename) : []);
+  fs.copyFileSync('build/src/favicon.ico', 'build/public/favicon.ico');
   copyTree('build/src/assets', 'build/public/assets');
 
   function copyTree(srcDir, dstDir, mapFileFn) {
