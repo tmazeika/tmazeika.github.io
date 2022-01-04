@@ -1,0 +1,10 @@
+extends ../../includes/layout
+
+block content
+  h2 All Posts
+  ul
+    each post in posts
+      li
+        a(href=`/blog/${post.slug}.html`)= post.title
+        br
+        small.muted= post.date
