@@ -1,16 +1,17 @@
-name: build and deploy
+name: build-static-site
 on: [push]
 jobs:
-  build-and-deploy:
+  build-static-site:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - name: install and build
-        run: |
-          yarn --frozen-lockfile
-          yarn build
-          
+      - name: install
+        run: yarn --frozen-lockfile
+
+      - name: build
+        run: yarn build
+
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@4.1.8
         with:
