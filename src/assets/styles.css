@@ -29,7 +29,7 @@
 
 body {
   color: #222;
-  font: 400 1em/1.4 'Source Sans Pro', serif;
+  font: 400 1em/1.5 'Source Sans Pro', serif;
 
   margin: 0;
   padding: 1rem;
@@ -62,17 +62,27 @@ strong {
   font-weight: 700;
 }
 
-pre.shiki {
-  border-radius: 5px;
-  font: 500 12px/1.4 "Source Code Pro", monospace;
-  letter-spacing: -0.35px;
+code {
+  font: 400 0.78em "Source Code Pro", monospace;
+  letter-spacing: -0.1px;
+}
 
-  padding: 1em;
+pre {
+  border-radius: 5px;
+
+  margin: 1rem -1rem;
+  padding: 1rem;
   overflow-x: auto;
 }
 
-code {
-  letter-spacing: -0.35px;
+@media (max-width: calc(36em + 2rem)) {
+  pre {
+    border-radius: unset;
+  }
+}
+
+pre code {
+  letter-spacing: -0.34px;
 }
 
 .muted {
