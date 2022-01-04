@@ -162,10 +162,6 @@ pre code {
   margin: 0.5rem 0;
 }
 
-.post-header {
-  line-height: 1;
-}
-
 .post-header h2 {
-  margin-bottom: 0.5rem;
+  margin-bottom: -0.25rem;
 }
