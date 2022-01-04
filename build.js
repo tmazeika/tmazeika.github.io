@@ -9,9 +9,7 @@ const pug = require('pug');
     theme: 'one-dark-pro',
   });
   const md = require('markdown-it')({
-    highlight(src, lang) {
-      return highlighter.codeToHtml(src, { lang });
-    },
+    highlight: (src, lang) => highlighter.codeToHtml(src, { lang }),
   });
   const defaultPugOptions = {
     filters: {
@@ -20,21 +18,19 @@ const pug = require('pug');
   };
 
   fs.rmSync('build', { recursive: true, force: true });
-
   copyTree('src', 'build/src');
 
   const blogIndexContent = fs.readFileSync('build/src/pages/blog/index.json', { encoding: 'utf-8' });
   const { posts: blogPosts } = JSON.parse(blogIndexContent);
-  fs.mkdirSync('build/public/blog', { recursive: true });
   fs.mkdirSync('build/public/assets', { recursive: true });
+  fs.mkdirSync('build/public/blog', { recursive: true });
   blogPosts.forEach((options) => {
-    fs.copyFileSync(`build/src/pages/blog/${options.slug}.md`, 'build/src/blog-gen/content.md');
     const templateFilename = 'build/src/blog-gen/post.pug';
-    let template = fs.readFileSync(templateFilename, { encoding: 'utf-8' });
-    template = template.replaceAll('__filename', `../pages/blog/${options.slug}.md`);
+    const template = fs.readFileSync(templateFilename, { encoding: 'utf-8' })
+      .replaceAll('###FILENAME###', `../pages/blog/${options.slug}.md`);
     const rendered = pug.render(template, {
-      ...defaultPugOptions,
       ...options,
+      ...defaultPugOptions,
       filename: templateFilename,
       pageName: options.title,
     });
@@ -45,15 +41,15 @@ const pug = require('pug');
     path.extname(filename) === '.pug' ? compilePage(filename) : []);
   copyTree('build/src/assets', 'build/public/assets');
 
-  function copyTree(srcDir, dstDir, fileFn) {
+  function copyTree(srcDir, dstDir, mapFileFn) {
     fs.mkdirSync(dstDir, { recursive: true });
     fs.readdirSync(srcDir).forEach((srcFilename) => {
       const dstFilename = path.join(dstDir, srcFilename);
       srcFilename = path.join(srcDir, srcFilename);
       if (fs.statSync(srcFilename).isDirectory()) {
-        copyTree(srcFilename, dstFilename, fileFn);
-      } else if (fileFn) {
-        const [newFilename, content] = fileFn(srcFilename);
+        copyTree(srcFilename, dstFilename, mapFileFn);
+      } else if (mapFileFn) {
+        const [newFilename, content] = mapFileFn(srcFilename);
         if (typeof content === 'string') {
           fs.writeFileSync(path.join(dstDir, newFilename), content);
         }
@@ -72,8 +68,8 @@ const pug = require('pug');
       options = JSON.parse(content);
     }
     return [`${name}.html`, pug.renderFile(filename, {
-      ...defaultPugOptions,
       ...options,
+      ...defaultPugOptions,
     })];
   }
 })();
