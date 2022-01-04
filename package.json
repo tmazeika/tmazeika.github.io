@@ -1,0 +1,14 @@
+{
+  "name": "mazeika.me",
+  "private": true,
+  "scripts": {
+    "start": "node serve.js",
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "markdown-it": "^12.3.0",
+    "node-static": "^0.7.11",
+    "pug": "^3.0.2",
+    "shiki": "^0.10.0"
+  }
+}

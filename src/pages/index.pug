@@ -1,0 +1,23 @@
+extends ../includes/layout
+
+block content
+  h2 About Me
+  p.
+    I'm TJ Mazeika, a software engineer based in Boston, MA.
+  h2 Experience
+  ul
+    mixin experience(company, position, date0, date1)
+      li
+        strong= company
+        br/ #{position} #[br]
+        small.muted #{date0} &ndash; #{date1}
+    +experience('Urban Emu', 'Software Engineer', 'Jan 2022', 'Present')
+    +experience('FoldLeft', 'Founder & Software Engineer', 'Nov 2020', 'Present')
+    +experience('AIR Worldwide', 'Software Engineer Co-op', 'Jan', 'Jun 2021')
+    +experience('Digitas', 'DevOps Engineer Co-op', 'Jan', 'Jul 2020')
+  h2 Education
+  p
+    strong Northeastern University #[br]
+    | Khoury College of Computer Sciences #[br]
+    | Bachelor of Science in Computer Science #[br]
+    small.muted Sep 2018 &ndash; Dec 2021

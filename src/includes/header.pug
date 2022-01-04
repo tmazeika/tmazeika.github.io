@@ -1,0 +1,15 @@
+header.header
+  div
+    a(href='/'): img(src='/assets/me.jpg').header-img
+    .header-title
+      h1 TJ Mazeika
+      p.muted Software Engineer
+  nav.header-nav: ul
+    mixin link(href, name)
+      li
+        if pageName === name
+          a.active(href=href)= name
+        else
+          a(href=href)= name
+    +link('/', 'About')
+    +link('/blog', 'Blog')

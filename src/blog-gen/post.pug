@@ -1,0 +1,7 @@
+extends ../includes/layout
+
+block content
+  .post-header
+    h2= title
+    small.muted= date
+  include:md __filename
