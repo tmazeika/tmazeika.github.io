@@ -10,16 +10,17 @@ html(lang='en')
     main.content
       block content
     include footer
-    script(type='module').
-      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
-      import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js';
+    block scripts
+      script(type='module').
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js';
 
-      const app = initializeApp({
-        apiKey: 'AIzaSyA-os9qsoSNm17fPiNrHx92Q7lsxUYcwiQ',
-        authDomain: 'mazeika-me-8f757.firebaseapp.com',
-        projectId: 'mazeika-me-8f757',
-        storageBucket: 'mazeika-me-8f757.appspot.com',
-        messagingSenderId: '696687148340',
-        appId: '1:696687148340:web:5387ecfa72b70c3614b961',
-      });
-      const analytics = getAnalytics(app);
+        const app = initializeApp({
+          apiKey: 'AIzaSyA-os9qsoSNm17fPiNrHx92Q7lsxUYcwiQ',
+          authDomain: 'mazeika-me-8f757.firebaseapp.com',
+          projectId: 'mazeika-me-8f757',
+          storageBucket: 'mazeika-me-8f757.appspot.com',
+          messagingSenderId: '696687148340',
+          appId: '1:696687148340:web:5387ecfa72b70c3614b961',
+        });
+        const analytics = getAnalytics(app);

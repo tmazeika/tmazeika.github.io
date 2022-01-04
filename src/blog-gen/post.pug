@@ -5,3 +5,17 @@ block content
     h2= title
     small.muted= date
   include:md ###FILENAME###
+
+block append scripts
+  script(type='application/ld+json').
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "#{title}",
+      "datePublished": "#{new Date(date).toISOString()}",
+      "author": {
+        "@type": "Person",
+        "name": "TJ Mazeika",
+        "url": "/"
+      }
+    }

@@ -8,3 +8,14 @@ block content
         a(href=`/blog/${post.slug}.html`)= post.title
         br
         small.muted= post.date
+
+block append scripts
+  script(type='application/ld+json')
+    | { "@context": "https://schema.org", "@type": "ItemList",
+    | "itemListElement": [
+    each post, index in posts
+      | { "@type": "ListItem", "position": #{index + 1},
+      | "url": "/blog/#{post.slug}.html" }
+      if index < posts.length - 1
+        | ,
+    | ]}
