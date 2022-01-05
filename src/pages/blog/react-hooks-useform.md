@@ -48,12 +48,12 @@ function App(): JSX.Element {
       )}
       {/* Use `form.control()` to create a controller for a specific form value 
       that can get or set that value. */}
-      <EmailInput controller={form.control('email')}/>
+      <EmailInput controller={form.control('email')} />
       {form.errors.email && (
         <p>{form.errors.email}</p>
       )}
-      <input type="submit" value="Submit" disabled={form.isSubmitting}/>
-      <input type="reset" value="Reset" onClick={form.reset}/>
+      <input type="submit" value="Submit" disabled={form.isSubmitting} />
+      <input type="reset" value="Reset" onClick={form.reset} />
     </form>
   );
 }
@@ -129,7 +129,7 @@ export interface Form<T> {
 
 /**
  * Controls an HTML form.
- * 
+ *
  * @param initialValues The initial values of the form inputs.
  * @param onValidate    Called to validate each input.
  * @param onSubmit      Called to submit the form.
