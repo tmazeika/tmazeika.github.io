@@ -42,6 +42,15 @@ code {
   letter-spacing: -0.1px;
 }
 
+code.subtitle {
+  color: #666;
+  font-size: 0.7em;
+  vertical-align: super;
+
+  margin-top: 0.25rem;
+  display: block;
+}
+
 pre {
   border-radius: 5px;
 
@@ -161,5 +170,5 @@ pre code {
 }
 
 .post-header h2 {
-  margin-bottom: 0;
+  margin-bottom: 0.25rem;
 }
