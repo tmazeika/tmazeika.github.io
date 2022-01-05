@@ -3,21 +3,23 @@ extends ../../includes/layout
 block content
   h2 All Posts
   ul
-    each post in posts
+    each post in posts.filter((post) => post.published)
       li
         a(href=`/blog/${post.slug}.html`)= post.title
         br
-        small.muted= post.date
+        code.subtitle= formatDate(post.date)
 
 block append scripts
   -
     const itemList = {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
-      itemListElement: posts.map((post, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        url: `/blog/${post.slug}.html`,
-      })),
+      itemListElement: posts
+        .filter((post) => post.published)
+        .map((post, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          url: `/blog/${post.slug}.html`,
+        })),
     };
   script(type='application/ld+json')!= JSON.stringify(itemList)

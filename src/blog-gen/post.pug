@@ -3,7 +3,7 @@ extends ../includes/layout
 block content
   .post-header
     h2= title
-    small.muted= date
+    code.subtitle= formatDate(date)
   include:md ###FILENAME###
 
 block append scripts
@@ -12,7 +12,7 @@ block append scripts
       '@context': 'https://schema.org',
       '@type': 'NewsArticle',
       headline: title,
-      datePublished: new Date(date).toISOString(),
+      datePublished: date,
       author: {
         '@type': 'Person',
         name: 'TJ Mazeika',

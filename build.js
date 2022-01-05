@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const pug = require('pug');
+const { DateTime } = require('luxon');
 
 (async () => {
   const highlighter = await require('shiki').getHighlighter({
@@ -12,6 +13,10 @@ const pug = require('pug');
     highlight: (src, lang) => highlighter.codeToHtml(src, { lang }),
   });
   const defaultPugOptions = {
+    formatDate: (src) => DateTime.fromISO(src)
+      .setLocale('en-US')
+      .setZone('America/New_York')
+      .toFormat('dd LLL yyyy'),
     filters: {
       md: (src) => md.render(src),
     },
@@ -24,7 +29,7 @@ const pug = require('pug');
   const { posts: blogPosts } = JSON.parse(blogIndexContent);
   fs.mkdirSync('build/public/assets', { recursive: true });
   fs.mkdirSync('build/public/blog', { recursive: true });
-  blogPosts.forEach((options) => {
+  blogPosts.filter((options) => options.published).forEach((options) => {
     const templateFilename = 'build/src/blog-gen/post.pug';
     const template = fs.readFileSync(templateFilename, { encoding: 'utf-8' })
       .replaceAll('###FILENAME###', `../pages/blog/${options.slug}.md`);
