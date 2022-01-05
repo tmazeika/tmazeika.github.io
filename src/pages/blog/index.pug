@@ -10,12 +10,14 @@ block content
         small.muted= post.date
 
 block append scripts
-  script(type='application/ld+json')
-    | { "@context": "https://schema.org", "@type": "ItemList",
-    | "itemListElement": [
-    each post, index in posts
-      | { "@type": "ListItem", "position": #{index + 1},
-      | "url": "/blog/#{post.slug}.html" }
-      if index < posts.length - 1
-        | ,
-    | ]}
+  -
+    const itemList = {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      itemListElement: posts.map((post, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `/blog/${post.slug}.html`,
+      })),
+    };
+  script(type='application/ld+json')!= JSON.stringify(itemList)

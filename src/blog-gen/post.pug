@@ -7,15 +7,16 @@ block content
   include:md ###FILENAME###
 
 block append scripts
-  script(type='application/ld+json').
-    {
-      "@context": "https://schema.org",
-      "@type": "NewsArticle",
-      "headline": "#{title}",
-      "datePublished": "#{new Date(date).toISOString()}",
-      "author": {
-        "@type": "Person",
-        "name": "TJ Mazeika",
-        "url": "/"
-      }
-    }
+  -
+    const article = {
+      '@context': 'https://schema.org',
+      '@type': 'NewsArticle',
+      headline: title,
+      datePublished: new Date(date).toISOString(),
+      author: {
+        '@type': 'Person',
+        name: 'TJ Mazeika',
+        url: '/',
+      },
+    };
+  script(type='application/ld+json')!= JSON.stringify(article)
