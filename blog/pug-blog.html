@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>@font-face {
+  font-display: swap;
+  font-family: 'Source Code Pro';
+  font-weight: 400;
+  font-style: italic;
+  src: local('Source Code Pro'), url('/assets/source-code-pro-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Source Code Pro';
+  font-weight: 400;
+  src: local('Source Code Pro'), url('/assets/source-code-pro-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  src: local('Source Sans Pro'), url('/assets/source-sans-pro-bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 400;
+  src: local('Source Sans Pro'), url('/assets/source-sans-pro-regular.ttf') format('truetype');
+}</style><link rel="stylesheet" href="/assets/styles.css"><title>How To Build a Blog With Pug - TJ Mazeika</title></head><body><header class="header"><div><a href="/"><img class="header-img" src="/assets/me.webp" alt="Profile photo"></a><div class="header-title"><h1>TJ Mazeika</h1><code class="subtitle">Software Engineer</code></div></div><nav class="header-nav"><ul><li><a href="/">About</a></li><li><a href="/blog">Blog</a></li></ul></nav></header><main class="content"><div class="post-header"><h2>How To Build a Blog With Pug</h2><code class="subtitle">05 Jan 2022</code></div><p>I've explored a couple of different frameworks for building this blog before settling on <a href="https://pugjs.org">Pug</a> templating with a custom build script. Most other solutions added too much magic and unnecessary complexity to the simple use case that I had. I wanted:</p>
+<ol>
+<li>An &quot;about me&quot; page.</li>
+<li>An index of all blog posts.</li>
+<li>Blog posts written in Markdown with syntax highlighting for fenced code blocks.</li>
+</ol>
+<p>None of those requirements included server interaction, so the entirety of the site would be served statically. This is where a bundler like Webpack would have come in, but I opted to bundle the static site by invoking the Pug, Markdown, and syntax highlighting compilers manually in code. Back to the basics. The advantages are several:</p>
+<ol>
+<li>You spend just as much time fumbling with Webpack plugins for a few hours.</li>
+<li>You actually understand what's happening.</li>
+<li>It's fun!</li>
+</ol>
+<p>The following is a high-level tutorial on how to get started on your own blog. It is not meant to fully detail every step. Instead, it is a guide for how to fit together all the pieces. For a completed example, check out the <a href="https://github.com/tmazeika/tmazeika.github.io/tree/395b9d982206a8b45c93fad1cff714c4487b5aed">source of this site</a>.</p>
+<h2>Project Setup</h2>
+<p>Create a Node project with Yarn and add the <a href="https://www.npmjs.com/package/pug">pug</a> package. Also create a <code>build.js</code> file, which will be responsible for bundling our templates and assets into a static site.</p>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #abb2bf">.
+├── node_modules/
+├── build.js
+├── package.json
+└── yarn.lock
+</span></span></code></pre>
+<p>In your <code>package.json</code>, add a <code>build</code> script that runs <code>node build.js</code>:</p>
+<pre class="filename"><code>package.json</code></pre>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #ABB2BF">{</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// ...</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">&quot;scripts&quot;</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">&quot;build&quot;</span><span style="color: #ABB2BF">: </span><span style="color: #98C379">&quot;node build.js&quot;</span></span>
+<span class="line"><span style="color: #ABB2BF">  },</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// ...</span></span>
+<span class="line"><span style="color: #ABB2BF">}</span></span>
+<span class="line"></span></code></pre>
+<h2>Pages</h2>
+<p>Use Pug to create a layout template from which all pages will extend. Then, create the homepage, blog index, and a sample blog post.</p>
+<pre class="filename"><code>layout.pug</code></pre>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #ABB2BF">doctype html</span></span>
+<span class="line"><span style="color: #E06C75">html</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">head</span><span style="color: #ABB2BF">: </span><span style="color: #E06C75">title</span><span style="color: #ABB2BF"> My Blog</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">body</span><span style="color: #ABB2BF">: </span><span style="color: #C678DD">block</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">content</span></span>
+<span class="line"></span></code></pre>
+<pre class="filename"><code>index.pug</code></pre>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #C678DD">extends</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">layout</span></span>
+<span class="line"><span style="color: #C678DD">block</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">content</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">p</span><span style="color: #ABB2BF"> Welcome to my blog!</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">p</span><span style="color: #ABB2BF">: </span><span style="color: #E06C75">a</span><span style="color: #D19A66">(href</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&#39;blog&#39;</span><span style="color: #D19A66">)</span><span style="color: #ABB2BF"> All Posts</span></span>
+<span class="line"></span></code></pre>
+<pre class="filename"><code>blog/index.pug</code></pre>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #C678DD">extends</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">../layout</span></span>
+<span class="line"><span style="color: #C678DD">block</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">content</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">h1</span><span style="color: #ABB2BF"> All Posts</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">ul</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">li</span><span style="color: #ABB2BF">: </span><span style="color: #E06C75">a</span><span style="color: #D19A66">(href</span><span style="color: #ABB2BF">=</span><span style="color: #98C379">&#39;first-post.html&#39;</span><span style="color: #D19A66">)</span><span style="color: #ABB2BF"> First Post</span></span>
+<span class="line"></span></code></pre>
+<pre class="filename"><code>blog/first-post.pug</code></pre>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #C678DD">extends</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">../layout</span></span>
+<span class="line"><span style="color: #C678DD">block</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">content</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">h1</span><span style="color: #ABB2BF"> First Post</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">p</span><span style="color: #ABB2BF"> This is my first blog post. Wow!</span></span>
+<span class="line"></span></code></pre>
+<p>Ideally, we would like to generate the following site structure from these templates:</p>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #abb2bf">public/
+├── blog/
+│   ├── first-post.html
+│   └── index.html
+└── index.html
+</span></span></code></pre>
+<p>The <a href="https://pugjs.org/api/reference.html#pugcompilefilepath-options">Pug docs</a> tell us how to compile a Pug template into an HTML string. Since this is a part of the build step, put this into <code>build.js</code>:</p>
+<pre class="filename"><code>build.js</code></pre>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">fs</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">require</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;fs&#39;</span><span style="color: #ABB2BF">); </span><span style="color: #7F848E; font-style: italic">// This is built in to Node!</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">pug</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">require</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;pug&#39;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// Compile each template with Pug.</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">indexHtml</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">  </span><span style="color: #E5C07B">pug</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">renderFile</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;index.pug&#39;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">blogIndexHtml</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">  </span><span style="color: #E5C07B">pug</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">renderFile</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;blog/index.pug&#39;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">blogFirstPostHtml</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">  </span><span style="color: #E5C07B">pug</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">renderFile</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;blog/first-post.pug&#39;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// Now that we have HTML strings, let&#39;s write them out to files within public/.</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// Since this is a build script, we&#39;ll want to start with an empty build</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// directory every time, so recursively remove public/:</span></span>
+<span class="line"><span style="color: #E5C07B">fs</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">rmSync</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;public&#39;</span><span style="color: #ABB2BF">, { </span><span style="color: #E06C75">recursive</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">true</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">force</span><span style="color: #ABB2BF">: </span><span style="color: #D19A66">true</span><span style="color: #ABB2BF"> });</span></span>
+<span class="line"><span style="color: #E5C07B">fs</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">mkdirSync</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;public&#39;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #E5C07B">fs</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">mkdirSync</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;public/blog&#39;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #E5C07B">fs</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">writeFileSync</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;public/index.html&#39;</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">indexHtml</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #E5C07B">fs</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">writeFileSync</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;public/blog/index.html&#39;</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">blogIndexHtml</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #E5C07B">fs</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">writeFileSync</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;public/blog/first-post.html&#39;</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">blogFirstPostHtml</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span></code></pre>
+<p>That's it! Run <code>yarn build</code> and open up <code>public/index.html</code> in your browser. At this point, we'll skip over how to make this more flexible for a larger site, but the basic idea is there.</p>
+<h1>Markdown</h1>
+<p>Now looking at <a href="https://pugjs.org/language/includes.html#including-filtered-text">this section</a> of the Pug docs, we've got immediate direction for how to add Markdown support. You would just do <code>yarn add markdown-it jstransformer jstransformer-markdown-it</code>, copy in their example, and voilà! However, we're going to go in a slightly different direction in light of doing everything ourselves. It's actually easier that way because we're going to want to configure the syntax highlighter later.</p>
+<p>Add only the Markdown compiler with <code>yarn add markdown-it</code>. Now let's write our blog post in Markdown, in a file next to <code>first-post.pug</code> called <code>first-post.md</code> (note the extension):</p>
+<pre class="filename"><code>first-post.md</code></pre>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #E06C75"># First Post</span></span>
+<span class="line"><span style="color: #ABB2BF">This is my first blog post. Wow!</span></span>
+<span class="line"></span></code></pre>
+<p>And update <code>first-post.pug</code> to include it:</p>
+<pre class="filename"><code>first-post.pug</code></pre>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #C678DD">extends</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">../layout</span></span>
+<span class="line"><span style="color: #C678DD">block</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">content</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">include:markdown</span><span style="color: #ABB2BF"> first-post.md</span></span>
+<span class="line"></span></code></pre>
+<p>During the build step, Pug will read <code>first-post.md</code> and run it through a function that we're going to supply called <code>markdown()</code>. Super simple stuff. Let's give it <code>markdown()</code>:</p>
+<pre class="filename"><code>build.js</code></pre>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">fs</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">require</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;fs&#39;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// Import the Markdown compiler and instantiate it.</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">md</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">require</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;markdown-it&#39;</span><span style="color: #ABB2BF">)();</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">pug</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">require</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;pug&#39;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">options</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #E06C75">filters</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">     </span><span style="color: #7F848E; font-style: italic">// `src` is just raw text from our .md file. This function renders it into</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">// HTML.</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #61AFEF">markdown</span><span style="color: #ABB2BF">: (</span><span style="color: #E06C75; font-style: italic">src</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">md</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">render</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">),</span></span>
+<span class="line"><span style="color: #ABB2BF">  },</span></span>
+<span class="line"><span style="color: #ABB2BF">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// Pass the `options` object to the Pug compiler.</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">indexHtml</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">  </span><span style="color: #E5C07B">pug</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">renderFile</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;index.pug&#39;</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">options</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">blogIndexHtml</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">  </span><span style="color: #E5C07B">pug</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">renderFile</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;blog/index.pug&#39;</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">options</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">blogFirstPostHtml</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">  </span><span style="color: #E5C07B">pug</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">renderFile</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;blog/first-post.pug&#39;</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75">options</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #7F848E; font-style: italic">// ...</span></span>
+<span class="line"></span></code></pre>
+<h2>Syntax Highlighting</h2>
+<p>I decided to use <a href="https://shiki.matsu.io/">Shiki</a> for this, but most other syntax highlighters work just the same. Run <code>yarn add shiki</code>. Similar to the Markdown compiler, the Shiki library provides to us a function, <code>codeToHtml()</code>, that turns some string of source code into colorful HTML. The markdown-it instantiation procedure is quite amenable to such a function:</p>
+<pre class="filename"><code>build.js</code></pre>
+<pre class="shiki" style="background-color: #282c34"><code><span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">fs</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">require</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;fs&#39;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">pug</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">require</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;pug&#39;</span><span style="color: #ABB2BF">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #ABB2BF">(</span><span style="color: #C678DD">async</span><span style="color: #ABB2BF"> () </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">highlighter</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">await</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">require</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;shiki&#39;</span><span style="color: #ABB2BF">).</span><span style="color: #61AFEF">getHighlighter</span><span style="color: #ABB2BF">({</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">theme</span><span style="color: #ABB2BF">: </span><span style="color: #98C379">&#39;one-dark-pro&#39;</span><span style="color: #ABB2BF">,</span></span>
+<span class="line"><span style="color: #ABB2BF">  });</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">md</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">require</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&#39;markdown-it&#39;</span><span style="color: #ABB2BF">)({</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">// `src` is the raw text inside fenced code blocks that markdown-it finds.</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #7F848E; font-style: italic">// `lang` is the specified language of that code block.</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #61AFEF">highlight</span><span style="color: #ABB2BF">: (</span><span style="color: #E06C75; font-style: italic">src</span><span style="color: #ABB2BF">, </span><span style="color: #E06C75; font-style: italic">lang</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">highlighter</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">codeToHtml</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">, { </span><span style="color: #E06C75">lang</span><span style="color: #ABB2BF"> }),</span></span>
+<span class="line"><span style="color: #ABB2BF">  });</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #C678DD">const</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">options</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> {</span></span>
+<span class="line"><span style="color: #ABB2BF">    </span><span style="color: #E06C75">filters</span><span style="color: #ABB2BF">: {</span></span>
+<span class="line"><span style="color: #ABB2BF">      </span><span style="color: #61AFEF">markdown</span><span style="color: #ABB2BF">: (</span><span style="color: #E06C75; font-style: italic">src</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">=&gt;</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">md</span><span style="color: #ABB2BF">.</span><span style="color: #61AFEF">render</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">), </span><span style="color: #7F848E; font-style: italic">// No change here!</span></span>
+<span class="line"><span style="color: #ABB2BF">    },</span></span>
+<span class="line"><span style="color: #ABB2BF">  };</span></span>
+<span class="line"><span style="color: #ABB2BF">  </span><span style="color: #7F848E; font-style: italic">// Move the rest of the old code into this function body...</span></span>
+<span class="line"><span style="color: #ABB2BF">})();</span></span>
+<span class="line"></span></code></pre>
+<p>We've moved everything into an immediately invoked async function because Shiki decided to provide an async API. No big deal.</p>
+<h2>Continuing</h2>
+<p>Figuring out how to compose and customize dependencies is a challenge. That's why I've kept the dependency tree tiny and why I call into those libraries, not get called by them. As a result, it should be fairly easy (depending on skill level) to implement some of the following suggestions and beyond:</p>
+<ul>
+<li><strong>Add an assets directory.</strong> Store your images, styles, and scripts in here and then copy them verbatim into the <code>public/assets/</code> directory during the build step.</li>
+<li><strong>Keep track of the current page for navigation purposes.</strong> You can pass the name of each page as a variable during template compilation. Then, conditionally highlight the active page in a navbar.</li>
+<li><strong>Generalize the Pug compilation code in <code>build.js</code>.</strong> There's a bit of repeated code when reading and compiling templates. List the files in your directory and filter for those ending in &quot;.pug&quot;.</li>
+<li><strong>Auto-generate the blog index.</strong> Use Pug's iteration syntax and a JS object with all blog posts in it that you can pass into the Pug compiler's <code>options</code> parameter.</li>
+<li><strong>Eliminate <code>first-post.pug</code>.</strong> This is a little trickier because you can't use variables when specifying the <code>include</code> path in a Pug template. I solved this by copying all my source files into a temporary directory and then preprocessing the blog posts to effectively generate the post templates for me.</li>
+</ul>
+</main><footer class="footer muted"><ul class="footer-nav"><li>&copy; TJ Mazeika</li><li><a class="footer-nav-item" href="https://github.com/tmazeika"><img class="footer-ico" src="/assets/github.webp" alt="GitHub logo">/tmazeika</a></li><li><a class="footer-nav-item" href="https://www.linkedin.com/in/tj-mazeika/"><img class="footer-ico" src="/assets/linkedin.png" alt="LinkedIn logo">/tj-mazeika</a></li></ul></footer><script type="module">import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
+import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js';
+
+const app = initializeApp({
+  apiKey: 'AIzaSyA-os9qsoSNm17fPiNrHx92Q7lsxUYcwiQ',
+  authDomain: 'mazeika-me-8f757.firebaseapp.com',
+  projectId: 'mazeika-me-8f757',
+  storageBucket: 'mazeika-me-8f757.appspot.com',
+  messagingSenderId: '696687148340',
+  appId: '1:696687148340:web:5387ecfa72b70c3614b961',
+});
+const analytics = getAnalytics(app);</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"How To Build a Blog With Pug","datePublished":"2022-01-05T00:00:00-05:00","author":{"@type":"Person","name":"TJ Mazeika","url":"/"}}</script></body></html>
