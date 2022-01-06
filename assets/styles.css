@@ -10,7 +10,7 @@ body {
   padding: 1rem;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul {
+h1, h2, h3, h4, h5, h6, p, ul, ol {
   font-weight: inherit;
 
   margin: 0;
@@ -87,7 +87,7 @@ pre code {
   font-size: 0.78em;
 }
 
-:is(p, ul) code:not(.subtitle) {
+:is(p, ul, ol) code:not(.subtitle) {
   background-color: #f4f4f4;
 
   margin: 0 0.025rem;
@@ -135,7 +135,7 @@ pre code {
 }
 
 @media (max-width: 470px) {
-  .header-nav ul, .footer-nav {
+  .header-nav :is(ul, ol), .footer-nav {
     gap: 1.5rem;
   }
 }
@@ -182,7 +182,7 @@ pre code {
   margin: 2rem auto;
 }
 
-.content :is(h1, h2, h3, h4, h5, h6, p, ul) {
+.content :is(h1, h2, h3, h4, h5, h6, p, ul, ol) {
   margin: 1rem 0;
 }
 
