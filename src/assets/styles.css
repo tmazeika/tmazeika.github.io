@@ -52,7 +52,7 @@ pre.filename {
   color: #7f848e;
 
   margin: 1rem -1rem 0;
-  padding: 0.5rem 1rem 0.4rem;
+  padding: 0.5rem 1rem 0.5rem;
   overflow-x: auto;
 }
 
@@ -60,7 +60,7 @@ pre.filename + pre {
   border-radius: 0 0 5px 5px;
 
   margin: 0 -1rem 1rem;
-  padding: 0.2rem 1rem 1rem;
+  padding: 0.5rem 1rem 1rem;
 }
 
 @media (max-width: calc(36em + 2rem)) {
