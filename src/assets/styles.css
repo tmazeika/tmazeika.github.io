@@ -52,7 +52,7 @@ pre.filename {
   color: #7f848e;
 
   margin: 1rem -1rem 0;
-  padding: 0.2rem 1rem;
+  padding: 0.5rem 1rem 0.4rem;
   overflow-x: auto;
 }
 
@@ -79,7 +79,7 @@ code.subtitle {
   font-size: 0.7em;
   vertical-align: super;
 
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
   display: block;
 }
 
@@ -89,7 +89,6 @@ pre code {
 
 :is(p, ul) code:not(.subtitle) {
   background-color: #f4f4f4;
-  font-weight: 200;
 
   margin: 0 0.025rem;
   padding: 0 0.075rem;
