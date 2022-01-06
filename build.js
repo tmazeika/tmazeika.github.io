@@ -10,6 +10,7 @@ const { DateTime } = require('luxon');
     theme: 'one-dark-pro',
   });
   const md = require('markdown-it')({
+    html: true,
     highlight: (src, lang) => highlighter.codeToHtml(src, { lang }),
   });
   const defaultPugOptions = {

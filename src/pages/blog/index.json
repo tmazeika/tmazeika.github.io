@@ -5,7 +5,7 @@
       "title": "How To Build a Blog With Pug",
       "slug": "pug-blog",
       "date": "2022-01-05T00:00:00-05:00",
-      "published": false
+      "published": true
     },
     {
       "title": "React Hooks: Build Your Own useForm()",

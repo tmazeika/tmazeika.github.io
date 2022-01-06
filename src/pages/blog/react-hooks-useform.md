@@ -9,8 +9,8 @@ all, [a little copying is better than a little dependency](https://www.youtube.c
 
 Before we get to the implementation, here's what we're trying to achieve:
 
+<pre class="filename"><code>App.tsx</code></pre>
 ```tsx
-// App.tsx
 import React from 'react';
 import useForm, { FormValueController } from './useForm';
 
@@ -84,8 +84,8 @@ would `form.set('nmae', '...')` type check.
 
 ## Implementation
 
+<pre class="filename"><code>useForm.ts</code></pre>
 ```ts
-// useForm.ts
 import { SyntheticEvent, useCallback, useReducer, useState } from 'react';
 
 /** Controls a single form value. */

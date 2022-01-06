@@ -37,9 +37,41 @@ strong {
   font-weight: 700;
 }
 
+pre {
+  border-radius: 5px;
+
+  margin: 1rem -1rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+pre.filename {
+  background-color: #282c34;
+  border-bottom: 1px solid #3d424d;
+  border-radius: 5px 5px 0 0;
+  color: #7f848e;
+
+  margin: 1rem -1rem 0;
+  padding: 0.2rem 1rem;
+  overflow-x: auto;
+}
+
+pre.filename + pre {
+  border-radius: 0 0 5px 5px;
+
+  margin: 0 -1rem 1rem;
+  padding: 0.2rem 1rem 1rem;
+}
+
+@media (max-width: calc(36em + 2rem)) {
+  pre, pre.filename, pre.filename + pre {
+    border-radius: 0;
+  }
+}
+
 code {
-  font: 400 0.78em 'Source Code Pro', monospace;
-  letter-spacing: -0.1px;
+  font: 400 1em 'Source Code Pro', monospace;
+  letter-spacing: -0.34px;
 }
 
 code.subtitle {
@@ -51,22 +83,16 @@ code.subtitle {
   display: block;
 }
 
-pre {
-  border-radius: 5px;
-
-  margin: 1rem -1rem;
-  padding: 1rem;
-  overflow-x: auto;
-}
-
-@media (max-width: calc(36em + 2rem)) {
-  pre {
-    border-radius: unset;
-  }
-}
-
 pre code {
-  letter-spacing: -0.34px;
+  font-size: 0.78em;
+}
+
+:is(p, ul) code:not(.subtitle) {
+  background-color: #f4f4f4;
+  font-weight: 200;
+
+  margin: 0 0.025rem;
+  padding: 0 0.075rem;
 }
 
 .muted {
