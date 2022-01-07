@@ -192,4 +192,10 @@ const app = initializeApp({
 const analytics = getAnalytics(app);</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"How To Build a Blog With Pug","datePublished":"2022-01-05T00:00:00-05:00","author":{"@type":"Person","name":"TJ Mazeika","url":"/"}}</script><script>const disqus_config = function() {
   this.page.url = 'https://mazeika.me/blog/pug-blog.html';
   this.page.identifier = 'pug-blog';
-};</script><script src="https://mazeika-me.disqus.com/embed.js" data-timestamp="1641570410811"></script></body></html>
+};
+(() => {
+  const script = document.createElement('script');
+  script.src = 'https://mazeika-me.disqus.com/embed.js';
+  script.setAttribute('data-timestamp', String(new Date().valueOf()));
+  document.body.append(script);
+})();</script></body></html>
