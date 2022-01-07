@@ -5,6 +5,7 @@ block content
     h2= title
     code.subtitle= formatDate(date)
   include:md ###FILENAME###
+  #disqus_thread
 
 block append scripts
   -
@@ -20,3 +21,9 @@ block append scripts
       },
     };
   script(type='application/ld+json')!= JSON.stringify(article)
+  script.
+    const disqus_config = function() {
+      this.page.url = 'https://mazeika.me/blog/#{slug}.html';
+      this.page.identifier = '#{slug}';
+    };
+  script(src='https://mazeika-me.disqus.com/embed.js' data-timestamp=new Date().valueOf())

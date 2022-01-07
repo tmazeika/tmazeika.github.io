@@ -197,3 +197,7 @@ pre code {
 .post-header h2 {
   margin-bottom: 0.25rem;
 }
+
+#disqus_thread {
+  margin-top: 2rem;
+}
