@@ -26,4 +26,9 @@ block append scripts
       this.page.url = 'https://mazeika.me/blog/#{slug}.html';
       this.page.identifier = '#{slug}';
     };
-  script(src='https://mazeika-me.disqus.com/embed.js' data-timestamp=new Date().valueOf())
+    (() => {
+      const script = document.createElement('script');
+      script.src = 'https://mazeika-me.disqus.com/embed.js';
+      script.setAttribute('data-timestamp', String(new Date().valueOf()));
+      document.body.append(script);
+    })();
