@@ -3,28 +3,28 @@
   font-family: 'Source Code Pro';
   font-weight: 400;
   font-style: italic;
-  src: local('Source Code Pro'), url('/assets/source-code-pro-italic.ttf') format('truetype');
+  src: local('Source Code Pro Italic'), local('SourceCodePro-Italic'), url('/assets/source-code-pro-italic.ttf') format('truetype');
 }
 
 @font-face {
   font-display: swap;
   font-family: 'Source Code Pro';
   font-weight: 400;
-  src: local('Source Code Pro'), url('/assets/source-code-pro-regular.ttf') format('truetype');
+  src: local('Source Code Pro Regular'), local('SourceCodePro-Regular'), local('Source Code Pro'), url('/assets/source-code-pro-regular.ttf') format('truetype');
 }
 
 @font-face {
   font-display: swap;
   font-family: 'Source Sans Pro';
   font-weight: 700;
-  src: local('Source Sans Pro'), url('/assets/source-sans-pro-bold.ttf') format('truetype');
+  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url('/assets/source-sans-pro-bold.ttf') format('truetype');
 }
 
 @font-face {
   font-display: swap;
   font-family: 'Source Sans Pro';
   font-weight: 400;
-  src: local('Source Sans Pro'), url('/assets/source-sans-pro-regular.ttf') format('truetype');
+  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), local('Source Sans Pro'), url('/assets/source-sans-pro-regular.ttf') format('truetype');
 }</style><link rel="stylesheet" href="/assets/styles.css"><title>React Hooks: Build Your Own useForm() - TJ Mazeika</title></head><body><header class="header"><div><a href="/"><img class="header-img" src="/assets/me.webp" alt="Profile photo"></a><div class="header-title"><h1>TJ Mazeika</h1><code class="subtitle">Software Engineer</code></div></div><nav class="header-nav"><ul><li><a href="/">About</a></li><li><a href="/blog">Blog</a></li></ul></nav></header><main class="content"><div class="post-header"><h2>React Hooks: Build Your Own useForm()</h2><code class="subtitle">30 Nov 2021</code></div><p>Forms in React are particularly tedious to implement because each input component demands its own <code>useState()</code> hook and
 change handler.
 There's <a href="https://final-form.org/react">a</a> <a href="https://react-hook-form.com/">ton</a> <a href="https://www.telerik.com/kendo-react-ui/components/form/">of</a> <a href="https://formik.org/">libraries</a>
