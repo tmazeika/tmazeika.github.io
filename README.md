@@ -17,7 +17,7 @@ The build script just executes the [build.js](./build.js) file. Here's a summary
 
 - Looks at src/pages/blog/index.json to find all blog posts' metadata (title, slug, and date).
 - Uses src/blog-gen/post.pug as a template for compiling each blog post Markdown file into HTML, each time
-  replacing `###FILENAME###` with the relative path to the associated Markdown.
+  replacing `content` with the associated rendered Markdown content.
 - Recursively compiles .pug files within src/pages/ into HTML, keeping the same directory structure. If a .json file
   with the same basename exists next to the Pug template, it will pass that JSON object to the Pug compiler only for
   that template.

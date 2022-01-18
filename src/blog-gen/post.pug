@@ -4,7 +4,7 @@ block content
   .post-header
     h2= title
     code.subtitle= formatDate(date)
-  include:md ###FILENAME###
+  div!= content
   #disqus_thread
 
 block append scripts

@@ -31,14 +31,12 @@ const { DateTime } = require('luxon');
   fs.mkdirSync('build/public/assets', { recursive: true });
   fs.mkdirSync('build/public/blog', { recursive: true });
   blogPosts.filter((options) => options.published).forEach((options) => {
-    const templateFilename = 'build/src/blog-gen/post.pug';
-    const template = fs.readFileSync(templateFilename, { encoding: 'utf-8' })
-      .replaceAll('###FILENAME###', `../pages/blog/${options.slug}.md`);
-    const rendered = pug.render(template, {
+    const mdContent = fs.readFileSync(`build/src/pages/blog/${options.slug}.md`, { encoding: 'utf-8' });
+    const rendered = pug.renderFile('build/src/blog-gen/post.pug', {
       ...options,
       ...defaultPugOptions,
-      filename: templateFilename,
       pageName: options.title,
+      content: md.render(mdContent),
     });
     fs.writeFileSync(`build/public/blog/${options.slug}.html`, rendered);
   });
