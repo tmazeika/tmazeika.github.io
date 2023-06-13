@@ -3,7 +3,7 @@ extends ../includes/layout
 block content
   h2 About Me
   p.
-    I'm TJ Mazeika, a software engineer based in Austin, TX.
+    I'm TJ Mazeika, a mid-level software engineer at JPMorgan Chase & Co. with three years of professional and 12 years of personal experience. Based in Austin, TX.
   h2 Experience
   ul
     mixin experience(company, position, date0, date1)
@@ -11,8 +11,9 @@ block content
         strong= company
         br/ #{position} #[br]
         code.subtitle #{date0} &ndash; #{date1}
-    +experience('Urban Emu', 'Software Engineer', 'Jan 2022', 'Present')
-    +experience('FoldLeft', 'Founder & Software Engineer', 'Nov 2020', 'Present')
+    +experience('JPMorgan Chase & Co.', 'Software Engineer III', 'Dec 2022', 'Present')
+    +experience('Urban Emu', 'Software Engineer', 'Aug 2021', 'Dec 2022')
+    +experience('FoldLeft', 'Founder & Software Engineer', 'Nov 2020', 'Dec 2022')
     +experience('AIR Worldwide', 'Software Engineer Co-op', 'Jan', 'Jun 2021')
     +experience('Digitas', 'DevOps Engineer Co-op', 'Jan', 'Jul 2020')
   h2 Education
